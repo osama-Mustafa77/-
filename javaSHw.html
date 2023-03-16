@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //---------------------------------------
+      //function check for Anagrams:
+      function getAnagrams(str1, str2) {
+        var s = 0;
+        for (var i = 0; i < str1.length; i++) {
+          for (var j = 0; j < str2.length; j++) {
+            if (str1[i] == str2[j]) {
+              s = s + 1;
+            }
+          }
+        }
+        if (s == str1.length) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      var str1 = "osma";
+      var str2 = "omsa";
+      console.log(
+        "Is String Anagrams ? (true or false) ? " + getAnagrams(str1, str2)
+      );
+
+      //---------------------------------------
+      //function slice in array:
+      function slice(arr, num1, num2) {
+        var arr1 = [],
+          c = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (i < num2 && i > num1) {
+            arr1[c] = arr[i];
+            c++;
+          }
+        }
+        return arr1;
+      }
+      console.log(
+        "The Slice Elements(the element between indecise) Is: " +
+          slice([1, 2, 34, 5, 7, 6, 5, 9], 2, 6)
+      );
+
+      //---------------------------------------
+      //function split a string to words:
+      function split(str) {
+        var arr = [];
+        var sub = ""; //this code equal to
+        var c = 0; // var arr=str.split(" ");
+        for (var i = 0; i < str.length; i++) {
+          if (str[i] != " ") {
+            sub += str[i];
+          } else {
+            arr[c] = sub;
+            sub = "";
+            ++c;
+          }
+          if (i == str.length - 1) {
+            arr[c] = sub;
+          }
+        }
+        console.log(arr);
+      }
+      var string = "Osama mustafa mugahad";
+      split(string);
+
+      //---------------------------------------
+      //function to calculate the Age:
+      function calcAge(birthD) {
+        let dNow = new Date();
+        let age = dNow - birthD;
+        return "The Age is: " + age / 1000 / 60 / 60 / 24 / 365 + "  year";
+      }
+      birthD = new Date("may 1,02");
+      console.log(calcAge(birthD));
+
+      //---------------------------------------
+      //function to check the string is avalid email or not
+      function valid_email(e) {
+        let email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.test(e) == true) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      var isValid = valid_email("osama@google.com");
+      console.log(isValid);
+
+      //---------------------------------------
+      //function to replace substring :
+      function replaceSub(str, sub, news) {
+        return str.split(sub).join(news);
+      }
+      var newString = replaceSub("osama mustafa mugahed ", "mugahed", "sallam");
+      console.log(newString);
+      //anthor sol=>
+      //
+      function split(str, s, news) {
+        var arr = [];
+        var sub = "";
+        var c = 0;
+        var su = "";
+
+        for (var i = 0; i < str.length; i++) {
+          if (str[i] != " ") {
+            sub += str[i];
+          } else {
+            arr[c] = sub;
+            sub = "";
+            ++c;
+          }
+          if (i == str.length - 1) {
+            arr[c] = sub;
+          }
+        }
+        for (var i = 0; i < str.length; i++) {
+          if (arr[c] == s) {
+            arr[c] = news;
+            break;
+          }
+        }
+        for (var i = 0; i < arr.length; i++) {
+          su += arr[i] + " ";
+        }
+        console.log(su);
+      }
+      var st = "Osama mustafa mugahed";
+      split(st, "mugahed", "Alhamadi");
+
+      //---------------------------------------
+      //function to find the second Smallest Value in array:
+      function secondSmallestVa(a) {
+        let sml = a[0];
+        let s_sml = a[1];
+        for (let i = 2; i < a.length; i++) {
+          if (a[i] < sml) {
+            s_sml = sml;
+            sml = a[i];
+          } else if (a[i] >= sml && a[i] < s_sml) {
+            s_sml = a[i];
+          }
+        }
+
+        return s_sml;
+      }
+      let arr = [7, 3, 0, 9, 8, 3];
+      let secondSmal = secondSmallestVa(arr);
+      console.log("The Second Smallest Number Is: " + secondSmal);
+
+      //---------------------------------------
+      //function to find defferent between two arrays:
+
+      var arr1 = [1, 2, 3, 4, 5];
+      var arr2 = [1, 4, 9, 10, 2];
+      function findDef(arr1, arr2) {
+        var deff = [];
+        var c = 0;
+        var f = false;
+        for (var i = 0; i < arr1.length; i++) {
+          for (var j = 0; j < arr2.length; j++) {
+            if (arr1[i] == arr2[j]) {
+              f = true;
+              break;
+            } else {
+              f = false;
+            }
+          }
+
+          if (!f) {
+            deff[c] = arr1[i];
+            c++;
+          }
+        }
+
+        return deff;
+      }
+      console.log("The Defferent Elements Is: " + findDef(arr1, arr2));
+
+      //---------------------------------------
+      //function to formate the time:
+      function formatTime(second) {
+        let hours = second / 3600;
+        let minutes = second % 3600;
+        second = second % 60;
+        console.log(
+          "format Time Is: " +
+            "Hours:  " +
+            hours +
+            "  Minutes:  " +
+            minutes +
+            "  Seconds:   " +
+            second
+        );
+      }
+      formatTime(7200);
+
+      //---------------------------------------
+      // function to convert string to camelCase by using regular exprssion
+      function toCamelCase(string) {
+        return string.replace(/[-_ ](.)/g, (_, c) => c.toUpperCase());
+      }
+      var camelCase = toCamelCase("my name-is_osama mustafa"); // or("my-addres");//or("my_addres");
+      console.log("camel Case Is: " + camelCase);
+    </script>
+  </body>
+</html>
